@@ -26,27 +26,28 @@ public class Program {
         // Switch Case for gameplay decisions
         switch (gameplay) {
 
-            case "g": // Spieler vorwÃ¤rts bewegung
+            case "g": // Player moves foward
                 // placeholder
                 System.out.println("Die Spielerfigur bewegt sich vorwaerts." + "\n");
                 break;
 
-            case "l": // Spieler bewegung nach links
+            case "l": // Player moves to the left
                 // placeholder
                 System.out.println("Die Spielerfigur bewegt sich nach links." + "\n");
                 break;
 
-            case "r": // Spieler bewegung nach rechts
+            case "r": // Player moves to the right
                 // placeholder
                 System.out.println("Die Spielerfigur bewegt sich nach rechts." + "\n");
                 break;
 
-            case "q": // beendet das Spiel
+            case "q": // Game over!
                 System.out.println("Das Spiel wird jetzt beendet!");
                 System.exit(0);
 
             default:
                 System.out.println("Bitte geben Sie einen Buchstaben ein!");
+                break;
         }
 
         // Field view
