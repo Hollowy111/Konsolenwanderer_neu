@@ -38,7 +38,7 @@ public class Field {
         for (int i = 0; i < fieldSize.length; i++) {
             for (int j = 0; j < fieldSize[i].length; j++) {
                 System.out.print(fieldSize[i][j]);
-                if (i==playerPosX && j==playerPosY){
+                if (j==playerPosX && i==playerPosY){
                     System.out.print(playerDirection);              //shows player position
                 }
             }

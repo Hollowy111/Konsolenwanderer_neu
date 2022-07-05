@@ -21,8 +21,9 @@ public class Program {
        // player.spawnPlayer(new String[4][4], field);
 
 
-        // loopyloop -> only exits when player presses "q"
+        // loopyloop -> only exits when player presses "q" or hits the edges!
         while (p) {
+
             field.showField(player.getxPosition(), player.getyPosition(), player.getDirection());
 
             // Ask player for input
