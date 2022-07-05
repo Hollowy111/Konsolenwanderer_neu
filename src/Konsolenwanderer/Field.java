@@ -17,11 +17,7 @@ public class Field {
                 } else {
                     fieldSize[i][j] = " ";
                 }
-
-                // System.out.print(fieldSize[i][j]);
             }
-
-            // System.out.println();
         }
     }
 
@@ -33,7 +29,6 @@ public class Field {
         this.fieldSize = fieldSize;
     }
 
-
     // shows field
     public void showField() {
 
@@ -43,13 +38,12 @@ public class Field {
             }
             System.out.println();
         }
-
     }
 
     // Set Player Position
     public void setPlayerPosition(int i, int j) {
         i++;
         j++;
-        fieldSize[i][j] = ">";
+        fieldSize[i][j]= "";
     }
 }

@@ -3,17 +3,25 @@ package Konsolenwanderer;
 public class Player {
 
     // Variables and Player Directions
-    public void Playermovement() {
 
-        int xPosition;
-        int yPosition;
-        String direction;
+    int xPosition;
+    int yPosition;
+    String direction = ">";
+
+    public String getDirection() {
+        return direction;
     }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
 
     Player(int xPosition, int yPosition) {
         xPosition = 3;
         yPosition = 4;
     }
+
 
     // Show Player on Field
     public void spawnPlayer(String[][] fieldSize, Field field) {
@@ -27,14 +35,57 @@ public class Player {
         }
     }
 
-    // Player initial Position
-	/*public void spawnPlayer(String[][] fieldSize, int xPosition, int yPosition) {
+    public void movePlayerleft() {
 
-		fieldSize[xPosition][yPosition] = ">";*/
+        switch (direction) {
+            case ">":
+                direction = "^";
+                break;
+            case "^":
+                direction = "<";
+                break;
+            case "<":
+                direction = "v";
+                break;
+            case "v":
+                direction = ">";
+                break;
+        }
+    }
 
-    /*
-     * public void movePlayer(); {
-     *
-     * } public void spi
-     */
+    public void movePlayerright() {
+
+        switch (direction) {
+            case ">":
+                direction = "v";
+                break;
+            case "^":
+                direction = ">";
+                break;
+            case "<":
+                direction = "^";
+                break;
+            case "v":
+                direction = "<";
+                break;
+        }
+    }
+
+    public void movePlayeroneStep() {
+        switch (direction) {
+            case ">":
+                xPosition++;         //go right
+                break;
+            case "<":
+                xPosition--;         //go left
+                break;
+            case "^":
+                yPosition--;         //go up
+                break;
+            case "v":
+                yPosition++;         //go down
+                break;
+        }
+    }
+
 }
