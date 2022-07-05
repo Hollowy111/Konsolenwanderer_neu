@@ -2,12 +2,17 @@ package Konsolenwanderer;
 
 public class Player {
 
-    // Variables and Player Directions
-
-    int xPosition;
-    int yPosition;
+    private int xPosition = 4;
+    private int yPosition = 4;
     String direction = ">";
 
+    public int getxPosition() {
+        return xPosition;
+    }
+
+    public int getyPosition() {
+        return yPosition;
+    }
     public String getDirection() {
         return direction;
     }
@@ -16,15 +21,8 @@ public class Player {
         this.direction = direction;
     }
 
-
-    Player(int xPosition, int yPosition) {
-        xPosition = 3;
-        yPosition = 4;
-    }
-
-
     // Show Player on Field
-    public void spawnPlayer(String[][] fieldSize, Field field) {
+   public void spawnPlayer(String[][] fieldSize, Field field) {
         for (int i = 0; i < fieldSize.length; i++) {
             if (i == fieldSize.length - 1) {
                 for (int j = 0; j < fieldSize[i].length; j++) {
@@ -35,6 +33,7 @@ public class Player {
         }
     }
 
+    // Player moves left
     public void movePlayerleft() {
 
         switch (direction) {
@@ -53,6 +52,7 @@ public class Player {
         }
     }
 
+    // Player moves right
     public void movePlayerright() {
 
         switch (direction) {
@@ -71,21 +71,31 @@ public class Player {
         }
     }
 
-    public void movePlayeroneStep() {
+    // Player moves 1 step
+    public void movePlayeronestep() {
         switch (direction) {
             case ">":
-                xPosition++;         //go right
+                yPosition++;         // go to the right
+
                 break;
             case "<":
-                xPosition--;         //go left
+                yPosition--;         // go to the left
                 break;
             case "^":
-                yPosition--;         //go up
+                xPosition--;         // go up
                 break;
             case "v":
-                yPosition++;         //go down
+                xPosition++;         // go down
                 break;
         }
+    }
+    public boolean hitedges(int borderX, int borderY){
+        boolean hit=false;
+        if (xPosition==0 || yPosition==0 || xPosition==borderX-1 || yPosition==borderY-1){
+            direction="\u001B[1m";
+            hit=true;       // GAME OVER
+        }
+        return hit;
     }
 
 }
