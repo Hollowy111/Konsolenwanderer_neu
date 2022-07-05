@@ -13,39 +13,29 @@ public class Player {
     public int getyPosition() {
         return yPosition;
     }
+
     public String getDirection() {
         return direction;
-    }
-
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
-
-    // Show Player on Field
-   public void spawnPlayer(String[][] fieldSize, Field field) {
-       for (int i = 0; i < fieldSize.length; i++) {
-           if (i == fieldSize.length - 1) {
-               for (int j = 0; j < fieldSize[i].length; j++) {
-                }
-            }
-        }
     }
 
     // Player moves left
     public void movePlayerleft() {
 
         switch (direction) {
-            case ">":
-                direction = "^";
-                break;
             case "^":
                 direction = "<";
                 break;
-            case "<":
-                direction = "v";
+
+            case ">":
+                direction = "^";
                 break;
+
             case "v":
                 direction = ">";
+                break;
+
+            case "<":
+                direction = "v";
                 break;
         }
     }
@@ -54,45 +44,46 @@ public class Player {
     public void movePlayerright() {
 
         switch (direction) {
-            case ">":
-                direction = "v";
-                break;
             case "^":
                 direction = ">";
                 break;
-            case "<":
-                direction = "^";
+            case ">":
+                direction = "v";
                 break;
             case "v":
                 direction = "<";
                 break;
+            case "<":
+                direction = "^";
+                break;
+
         }
     }
 
     // Player moves 1 step
     public void movePlayeronestep() {
         switch (direction) {
-            case ">":
-                yPosition++;         // go to the right
-                break;
-            case "<":
-                yPosition--;         // go to the left
-                break;
             case "^":
                 xPosition--;         // go up
                 break;
+            case ">":
+                yPosition++;         // go to the right
+                break;
             case "v":
                 xPosition++;         // go down
+                break;
+            case "<":
+                yPosition--;         // go to the left
                 break;
         }
     }
 
     //Game OVER when Cursor hits Edges (Border)
-    public boolean hitedges(int borderX, int borderY){
-        boolean hit=false;
-        if (xPosition==0 || yPosition==0 || xPosition==borderX-1 || yPosition==borderY-1){
-            direction="X";
-            hit=true;
+    public boolean hitedges(int Xborder, int Yborder) {
+        boolean hit = false;
+        if (xPosition == 0 || xPosition == Xborder - 1 || yPosition == 0 || yPosition == Yborder - 1) {
+            direction = "X";
+            hit = true;
         }
         return hit;
     }

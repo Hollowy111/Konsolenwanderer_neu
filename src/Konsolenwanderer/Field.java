@@ -24,10 +24,12 @@ public class Field {
             }
         }
     }
+
     // Getter
     public static int getXcord() {
         return xcord;
     }
+
     public static int getYcord() {
         return ycord;
     }
@@ -37,21 +39,13 @@ public class Field {
 
         for (int i = 0; i < fieldSize.length; i++) {
             for (int j = 0; j < fieldSize[i].length; j++) {
-                System.out.print(fieldSize[i][j]);
-                if (j==playerPosX && i==playerPosY){
-                    System.out.print(playerDirection);              //shows player position
+                if (i == playerPosX && j == playerPosY) {
+                    System.out.print(playerDirection);          // shows player position
+                } else {                                        // otherwise the > takes an extra slot in the field!!
+                    System.out.print(fieldSize[i][j]);
                 }
             }
             System.out.println();
         }
     }
-
-    // Sets Player Position
-    public void setPlayerPosition(int i, int j) {
-        //i++;
-       // j--;
-        //fieldSize[i][j]= ">";
-    }
-
-
 }

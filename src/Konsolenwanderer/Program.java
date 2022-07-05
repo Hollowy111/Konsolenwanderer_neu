@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Program {
 
     public static void main(String[] args) {
+
         // Variables
         boolean p = true;
         String gameplay;
-
 
         // Scanner
         Scanner sc = new Scanner(System.in);
@@ -18,8 +18,6 @@ public class Program {
         field.createField();
 
         Player player = new Player();
-       // player.spawnPlayer(new String[4][4], field);
-
 
         // loopyloop -> only exits when player presses "q" or hits the edges!
         while (p) {
@@ -27,7 +25,7 @@ public class Program {
             field.showField(player.getxPosition(), player.getyPosition(), player.getDirection());
 
             // Ask player for input
-            System.out.print("\n"+"Bitte waehlen:" + "\n" + "[g] vorwaerts gehen." + "\n" + "[l] links drehen." + "\n"
+            System.out.print("\n" + "Bitte waehlen:" + "\n" + "[g] vorwaerts gehen." + "\n" + "[l] links drehen." + "\n"
                     + "[r] rechts drehen." + "\n" + "[q] Spiel beenden." + "\n");
 
             gameplay = sc.next();
@@ -51,7 +49,7 @@ public class Program {
                     System.out.println("Die Spielfigur bewegt sich nach rechts." + "\n");
                     break;
 
-                case "q": // Game over!
+                case "q": // Exit Game! Game Over
                     System.out.println("Das Spiel wird jetzt beendet!");
                     System.exit(0);
             }
