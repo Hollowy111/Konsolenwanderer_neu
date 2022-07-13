@@ -3,10 +3,10 @@ import java.util.Scanner;
 public class Program {
     public static void main(String[] args) {
 
-
         // Variables
         boolean p = true;
         String gameplay;
+        String restart_game;
 
         // Scanner
         Scanner sc = new Scanner(System.in);
@@ -17,7 +17,7 @@ public class Program {
 
         Player player = new Player();
 
-        // loopyloop -> only exits when player presses "q" or hits the edges (border)!
+        // loopyloop -> only exits when player presses "q" (to exit the game) or hits the edges (border)!
         while (p) {
 
             field.showField(player.getxPosition(), player.getyPosition(), player.getDirection());
@@ -53,33 +53,44 @@ public class Program {
 
                 case "q": // Exit Game! Game Over
                     System.out.println("Das Spiel wird jetzt beendet!");
-                    //System.exit(0);
 
-                default:
-                    System.out.println("Falsche Taste gedrueckt!");
+                    // restart game? y | n
+                    if (restart == gameplay) {
+                        System.out.println("Wollen Sie erneut starten?" + "\n" + "[y] fuer neustarten." + "\n" + "[n] fuer beenden.");
 
-            if(restart == gameplay){
-                System.out.println("Wollen Sie erneut starten?"+"\n"+"[y] fuer neustarten."+"\n"+"[n] beenden.");
-                gameplay = sc.next();
-                switch (gameplay){
-                    case "y":
-                        System.out.println("Spiel wird neu gestartet!");
-                        //p=true;
-                        //field.showField(5,5,">");
+                        gameplay = sc.next();
+                        switch (gameplay) {
+                            case "y":
+                                System.out.println("Spiel wird neu gestartet!" + "\n");
+                                player.restart(4, 4, ">");
+                                break;
 
-                        break;
+                            case "n":
+                                System.out.println("Das Spiel wird jetzt beendet!" + "\n");
+                                System.exit(0);
+                        }
+                    }
 
-                    case"n":
-                        System.out.println("Das Spiel wird jetzt beendet!");
-                        System.exit(0);
-                }
             }
-            }
-
+            // Player hits Border -> game over! decision between restart and exit
             if (player.hitedges(field.getXcord(), field.getYcord())) {
                 p = false;
                 field.showField(player.getxPosition(), player.getyPosition(), player.getDirection());
-                System.out.println("GAME OVER !!!!!!");
+
+                System.out.println("\n" + "GAME OVER !!!!!!" + "\n" + "Wollen Sie erneut starten?" + "\n" + "\n" + "[y] fuer neustarten." + "\n" + "[n] fuer beenden.");
+                restart_game = sc.next();
+
+                switch (restart_game) {
+                    case "y":
+                        p = true;
+                        System.out.println("Spiel wird neu gestartet!" + "\n");
+                        player.restart(4, 4, ">");
+                        break;
+
+                    case "n":
+                        System.out.println("Das Spiel wird jetzt beendet!" + "\n");
+                        System.exit(0);
+                }
             }
         }
         sc.close();

@@ -75,7 +75,7 @@ public class Player {
         }
     }
 
-    //Game OVER when Cursor hits Edges (Border)
+    // Game Over when Cursor hits Edges (Border)
     public boolean hitedges(int Xborder, int Yborder) {
         boolean hit = false;
         if (xPosition == 0 || xPosition == Xborder - 1 || yPosition == 0 || yPosition == Yborder - 1) {
@@ -83,5 +83,12 @@ public class Player {
             hit = true;
         }
         return hit;
+    }
+
+    // Game restart
+    public void restart(int xPosition, int yPosition, String direction) {
+        this.direction = direction;
+        this.yPosition = yPosition;
+        this.xPosition = xPosition;
     }
 }
