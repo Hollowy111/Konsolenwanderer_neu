@@ -57,7 +57,7 @@ public class Player {
         }
     }
 
-    // Player moves 1 step
+    // Player moves 1 step (any direction)
     public void movePlayeronestep() {
         switch (direction) {
             case "^":
@@ -85,7 +85,7 @@ public class Player {
         return hit;
     }
 
-    // Game restart
+    // Game restart (not in use)
     public void restart(int xPosition, int yPosition, String direction) {
         this.direction = direction;
         this.yPosition = yPosition;
