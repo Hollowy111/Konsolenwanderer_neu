@@ -116,7 +116,6 @@ public class Program {
                                     System.exit(0);
                             }
                         }
-
                 }
 
                 // Player hits Border -> game over! decision between restart and exit
