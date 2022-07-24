@@ -20,13 +20,13 @@ public class Program {
         Scanner chooseplayerposix = new Scanner(System.in);
         Scanner chooseplayerposiy = new Scanner(System.in);
 
+        boolean works = false;
+
         // loopyloop -> only exits when player presses "q" (to exit the game) or hits the edges (border)!
         while (p) {
 
-            int playerposix = 1;
-            int playerposiy = 1;
-
-            boolean works = false;
+            int playerposix;
+            int playerposiy;
 
             while (works == false) {
 
@@ -36,7 +36,7 @@ public class Program {
                 if (playerposix > 0 && playerposix < 9) {
                     works= true;
                 } else {
-                    System.out.println("Zahl außerhalb des gueltigen bereichs angegeben" + "\n" + "Bitte X Position erneut eingeben.");
+                    System.out.println("Zahl ausserhalb des gueltigen bereichs angegeben" + "\n" + "Bitte X Position erneut eingeben.");
                     playerposix = chooseplayerposix.nextInt();
                 }
 
@@ -46,13 +46,14 @@ public class Program {
                 if (playerposiy > 0 && playerposiy < 9) {
                     works = true;
                 } else {
-                    System.out.println("Zahl außerhalb des gueltigen bereichs angegeben" + "\n" + "Bitte Y Position erneut eingeben.");
+                    System.out.println("Zahl ausserhalb des gueltigen bereichs angegeben" + "\n" + "Bitte Y Position erneut eingeben.");
                     playerposiy = chooseplayerposiy.nextInt();
                 }
 
+                // Set player on the designated x and y location on the field
                 player.ausgangsposix(playerposix);
                 player.ausgangsposiy(playerposiy);
-
+            }
 
 
                 // Ask player to choose position on the grid (x and y axis)
@@ -66,7 +67,7 @@ public class Program {
             player.ausgangsposiy(playerposiy);*/
 
                 field.showField(player.getxPosition(), player.getyPosition(), player.getDirection());
-            }
+
                 // Ask player for input
                 System.out.print("\n" + "Bitte waehlen:" + "\n" + "[g] vorwaerts gehen." + "\n" + "[l] links drehen." + "\n"
                         + "[r] rechts drehen." + "\n" + "[q] Spiel beenden." + "\n");
@@ -130,6 +131,12 @@ public class Program {
                         case "y":
                             p = true;
                             System.out.println("Spiel wird neu gestartet!" + "\n");
+
+                            restart_game = sc.next();
+                            //gameplay = sc.next();
+
+                            //works = true;
+
                             player.restart(4, 4, ">");
                             break;
 
@@ -139,7 +146,7 @@ public class Program {
                     }
                 }
 
-        }    //while (playerposiy > 0 || playerposiy < 9 || playerposix >0 || playerposiy <9);}
+        }   works = true;
         sc.close();
     }
 }
