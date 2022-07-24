@@ -17,82 +17,129 @@ public class Program {
 
         Player player = new Player();
 
+        Scanner chooseplayerposix = new Scanner(System.in);
+        Scanner chooseplayerposiy = new Scanner(System.in);
+
         // loopyloop -> only exits when player presses "q" (to exit the game) or hits the edges (border)!
         while (p) {
 
-            field.showField(player.getxPosition(), player.getyPosition(), player.getDirection());
+            int playerposix = 1;
+            int playerposiy = 1;
 
-            // Ask player for input
-            System.out.print("\n" + "Bitte waehlen:" + "\n" + "[g] vorwaerts gehen." + "\n" + "[l] links drehen." + "\n"
-                    + "[r] rechts drehen." + "\n" + "[q] Spiel beenden." + "\n");
+            boolean works = false;
 
-            gameplay = sc.next();
-            System.out.println();
+            while (works == false) {
 
-            String restart;
-            restart = String.valueOf(gameplay);
+                System.out.println("Spieler Position waehlen fuer die X Position im Grid zwischen 1 und 8.");
+                playerposix = chooseplayerposix.nextInt();
+
+                if (playerposix > 0 && playerposix < 9) {
+                    works= true;
+                } else {
+                    System.out.println("Zahl außerhalb des gueltigen bereichs angegeben" + "\n" + "Bitte X Position erneut eingeben.");
+                    playerposix = chooseplayerposix.nextInt();
+                }
+
+                System.out.println("Spieler Position waehlen fuer die Y Position im Grid zwischen 1 und 8.");
+                playerposiy = chooseplayerposiy.nextInt();
+
+                if (playerposiy > 0 && playerposiy < 9) {
+                    works = true;
+                } else {
+                    System.out.println("Zahl außerhalb des gueltigen bereichs angegeben" + "\n" + "Bitte Y Position erneut eingeben.");
+                    playerposiy = chooseplayerposiy.nextInt();
+                }
+
+                player.ausgangsposix(playerposix);
+                player.ausgangsposiy(playerposiy);
 
 
-            // Switch case for gameplay decisions
-            switch (gameplay) {
 
-                case "g": // Player moves foward
-                    player.movePlayeronestep();
-                    System.out.println("Die Spielfigur bewegt sich vorwaerts." + "\n");
-                    break;
+                // Ask player to choose position on the grid (x and y axis)
+           /* System.out.println("Spieler Position waehlen fuer die X Position im Grid");
+            int playerposix = chooseplayerposix.nextInt();
+            System.out.println("Spieler Position waehlen fuer die Y Position im Grid");
+            int playerposiy = chooseplayerposiy.nextInt();
 
-                case "l": // Player moves to the left
-                    player.movePlayerleft();
-                    System.out.println("Die Spielfigur bewegt sich nach links." + "\n");
-                    break;
+            // Places player on the x and y axis
+            player.ausgangsposix(playerposix);
+            player.ausgangsposiy(playerposiy);*/
 
-                case "r": // Player moves to the right
-                    player.movePlayerright();
-                    System.out.println("Die Spielfigur bewegt sich nach rechts." + "\n");
-                    break;
-
-                case "q": // Exit Game! Game Over
-                    System.out.println("Das Spiel wird jetzt beendet!");
-
-                    // restart game? y | n
-                    if (restart == gameplay) {
-                        System.out.println("Wollen Sie erneut starten?" + "\n" + "[y] fuer neustarten." + "\n" + "[n] fuer beenden.");
-
-                        gameplay = sc.next();
-                        switch (gameplay) {
-                            case "y":
-                                System.out.println("Spiel wird neu gestartet!" + "\n");
-                                player.restart(4, 4, ">");
-                                break;
-
-                            case "n":
-                                System.out.println("Das Spiel wird jetzt beendet!" + "\n");
-                                System.exit(0);
-                        }
-                    }
-
-            }
-            // Player hits Border -> game over! decision between restart and exit
-            if (player.hitedges(field.getXcord(), field.getYcord())) {
-                p = false;
                 field.showField(player.getxPosition(), player.getyPosition(), player.getDirection());
+            }
+                // Ask player for input
+                System.out.print("\n" + "Bitte waehlen:" + "\n" + "[g] vorwaerts gehen." + "\n" + "[l] links drehen." + "\n"
+                        + "[r] rechts drehen." + "\n" + "[q] Spiel beenden." + "\n");
 
-                System.out.println("\n" + "GAME OVER !!!!!!" + "\n" + "Wollen Sie erneut starten?" + "\n" + "\n" + "[y] fuer neustarten." + "\n" + "[n] fuer beenden.");
-                restart_game = sc.next();
+                gameplay = sc.next();
+                System.out.println();
 
-                switch (restart_game) {
-                    case "y":
-                        p = true;
-                        System.out.println("Spiel wird neu gestartet!" + "\n");
-                        player.restart(4, 4, ">");
+                String restart;
+                restart = String.valueOf(gameplay);
+
+
+                // Switch case for gameplay decisions
+                switch (gameplay) {
+
+                    case "g": // Player moves foward
+                        player.movePlayeronestep();
+                        System.out.println("Die Spielfigur bewegt sich vorwaerts." + "\n");
                         break;
 
-                    case "n":
-                        System.out.println("Das Spiel wird jetzt beendet!" + "\n");
-                        System.exit(0);
+                    case "l": // Player moves to the left
+                        player.movePlayerleft();
+                        System.out.println("Die Spielfigur bewegt sich nach links." + "\n");
+                        break;
+
+                    case "r": // Player moves to the right
+                        player.movePlayerright();
+                        System.out.println("Die Spielfigur bewegt sich nach rechts." + "\n");
+                        break;
+
+                    case "q": // Exit Game! Game Over
+                        System.out.println("Das Spiel wird jetzt beendet!");
+
+                        // restart game? y | n
+                        if (restart == gameplay) {
+                            System.out.println("Wollen Sie erneut starten?" + "\n" + "[y] fuer neustarten." + "\n" + "[n] fuer beenden.");
+
+                            gameplay = sc.next();
+                            switch (gameplay) {
+                                case "y":
+                                    System.out.println("Spiel wird neu gestartet!" + "\n");
+                                    player.restart(4, 4, ">");
+                                    break;
+
+                                case "n":
+                                    System.out.println("Das Spiel wird jetzt beendet!" + "\n");
+                                    System.exit(0);
+                            }
+                        }
+
                 }
-            }
-        }
+
+                // Player hits Border -> game over! decision between restart and exit
+                if (player.hitedges(field.getXcord(), field.getYcord())) {
+                    p = false;
+                    field.showField(player.getxPosition(), player.getyPosition(), player.getDirection());
+
+                    System.out.println("\n" + "GAME OVER !!!!!!" + "\n" + "Wollen Sie erneut starten?" + "\n" + "\n" + "[y] fuer neustarten." + "\n" + "[n] fuer beenden.");
+                    restart_game = sc.next();
+
+                    switch (restart_game) {
+                        case "y":
+                            p = true;
+                            System.out.println("Spiel wird neu gestartet!" + "\n");
+                            player.restart(4, 4, ">");
+                            break;
+
+                        case "n":
+                            System.out.println("Das Spiel wird jetzt beendet!" + "\n");
+                            System.exit(0);
+                    }
+                }
+
+        }    //while (playerposiy > 0 || playerposiy < 9 || playerposix >0 || playerposiy <9);}
         sc.close();
     }
 }
