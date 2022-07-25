@@ -97,4 +97,8 @@ public class Player {
     public void ausgangsposiy(int yPosition) {
         this.yPosition = yPosition;
     }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
 }

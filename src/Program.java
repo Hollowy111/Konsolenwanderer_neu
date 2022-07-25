@@ -20,12 +20,14 @@ public class Program {
 
         Scanner chooseplayerposix = new Scanner(System.in);
         Scanner chooseplayerposiy = new Scanner(System.in);
+        Scanner chooseplayerdirection = new Scanner(System.in);
 
         // loopyloop -> only exits when player presses "q" (to exit the game) or hits the edges (border)!
         while (p) {
 
             int playerposix;
             int playerposiy;
+            String playerdirection;
 
             while (works == false) {
 
@@ -49,9 +51,23 @@ public class Program {
                     playerposiy = chooseplayerposiy.nextInt();
                 }
 
-                // Set player on the designated x and y location on the field
+                while (true) {
+                    System.out.println("Spieler Position waehlen fuer die Spielerfigur, Auswahl: " + "^ > v < ");
+                    playerdirection = chooseplayerdirection.next();
+                    if (playerdirection.contains("^") || playerdirection.contains(">") || playerdirection.contains("v") || playerdirection.contains("<")) {
+                        break;
+                    } else {
+                        System.out.println("Nicht erlaubtes Zeichen ! Bitte waehlen fuer die Spielerfigur, Auswahl " + "^ > v < ");
+                        playerdirection = chooseplayerdirection.next();
+                    }
+                }
+
+                // Set player on the designated x and y location on the field as well as cursor (player direction) position
                 player.ausgangsposix(playerposix);
                 player.ausgangsposiy(playerposiy);
+                player.setDirection(playerdirection);
+
+
             }
 
             field.showField(player.getxPosition(), player.getyPosition(), player.getDirection());
@@ -102,6 +118,7 @@ public class Program {
 
                             case "n":
                                 System.out.println("Das Spiel wird jetzt beendet!" + "\n");
+                                System.out.println("Danke fuers spielen :-)" + "\n");
                                 System.exit(0);
                         }
                     }
@@ -121,7 +138,7 @@ public class Program {
                         System.out.println("Spiel wird neu gestartet!" + "\n");
 
                         works = false;
-                        player.direction = ">";
+                        // player.direction = ">";
 
                         break;
 
