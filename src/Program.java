@@ -29,6 +29,7 @@ public class Program {
             int playerposiy;
             String playerdirection;
 
+            // Forces Player to do the proper input
             while (works == false) {
 
                 System.out.println("Spieler Position waehlen fuer die X Position im Grid zwischen 1 und 8.");
@@ -57,8 +58,8 @@ public class Program {
                     if (playerdirection.contains("^") || playerdirection.contains(">") || playerdirection.contains("v") || playerdirection.contains("<")) {
                         break;
                     } else {
-                        System.out.println("Nicht erlaubtes Zeichen ! Bitte waehlen fuer die Spielerfigur, Auswahl " + "^ > v < ");
-                        playerdirection = chooseplayerdirection.next();
+                        System.out.println("Fehler! Falsche eingabe! ");
+                        //playerdirection = chooseplayerdirection.next();
                     }
                 }
 
