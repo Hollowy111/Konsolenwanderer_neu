@@ -21,6 +21,7 @@ public class Program {
         Scanner chooseplayerposix = new Scanner(System.in);
         Scanner chooseplayerposiy = new Scanner(System.in);
         Scanner chooseplayerdirection = new Scanner(System.in);
+        Scanner choosefieldsize = new Scanner(System.in);
 
         // loopyloop -> only exits when player presses "q" (to exit the game) or hits the edges (border)!
         while (p) {
@@ -29,8 +30,24 @@ public class Program {
             int playerposiy;
             String playerdirection;
 
+;
             // Forces Player to do the proper input
             while (works == false) {
+
+                int n =0;
+                int fieldsize;
+
+                //System.out.println("Bitte die groesse des Spielfeldes waehlen"+"\n");
+                String[][] secondArray = field.getFieldSize();
+                //secondArray = field.getFieldSize();
+                System.out.println("Enter the elements of the array: ");
+                for(int i=0; i<n; i++){
+                    secondArray[i]=choosefieldsize.next();
+                }
+
+
+                   // secondArray = choosefieldsize.nextInt();
+
 
                 System.out.println("Spieler Position waehlen fuer die X Position im Grid zwischen 1 und 8.");
                 playerposix = chooseplayerposix.nextInt();

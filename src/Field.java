@@ -14,7 +14,7 @@ public class Field {
 
             for (int j = 0; j < fieldSize[i].length; j++) {
 
-                if (i == 0 || i == 9 || j == 0 || j == 9) {
+                if (i == 0 || i == (fieldSize.length - 1) || j == 0 || j == (fieldSize.length - 1)) {
                     fieldSize[i][j] = "#";
                 } else {
                     fieldSize[i][j] = " ";
@@ -23,7 +23,10 @@ public class Field {
         }
     }
 
-    // Getter
+    public String[][] getFieldSize() {
+        return fieldSize;
+    }
+
     public static int getXcord() {
         return xcord;
     }
