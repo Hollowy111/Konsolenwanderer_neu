@@ -1,11 +1,12 @@
 public class Field {
 
     // Variables
-    private static int xcord = 10;
-    private static int ycord = 10;
+    static int xcord; //
+    static int ycord; //
+
 
     // Array
-    private String[][] fieldSize = new String[xcord][ycord];
+    String[][] fieldSize = new String[xcord][ycord];
 
     // creates Field
     public void createField() {
@@ -23,8 +24,20 @@ public class Field {
         }
     }
 
+    public static void setXcord(int xcord) {
+        Field.xcord = xcord;
+    }
+
+    public static void setYcord(int ycord) {
+        Field.ycord = ycord;
+    }
+
     public String[][] getFieldSize() {
         return fieldSize;
+    }
+
+    public void setFieldSize(String[][] fieldSize) {
+        this.fieldSize = fieldSize;
     }
 
     public static int getXcord() {

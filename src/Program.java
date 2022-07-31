@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
 public class Program {
-    public static void main(String[] args) {
+
+       public static void main(String[] args) {
 
         // Variables
         boolean p = true;
@@ -13,15 +14,15 @@ public class Program {
         Scanner sc = new Scanner(System.in);
 
         // Field view
-        Field field = new Field();
-        field.createField();
+           Field field = new Field();
+           field.createField();
 
         Player player = new Player();
 
         Scanner chooseplayerposix = new Scanner(System.in);
         Scanner chooseplayerposiy = new Scanner(System.in);
         Scanner chooseplayerdirection = new Scanner(System.in);
-        Scanner choosefieldsize = new Scanner(System.in);
+        Scanner choosefieldsizex = new Scanner(System.in);
 
         // loopyloop -> only exits when player presses "q" (to exit the game) or hits the edges (border)!
         while (p) {
@@ -30,40 +31,79 @@ public class Program {
             int playerposiy;
             String playerdirection;
 
-;
             // Forces Player to do the proper input
+            int fieldsizea= 0;
+            int fieldsizeb =0;
+
             while (works == false) {
 
-                int n =0;
-                int fieldsize;
 
-                //System.out.println("Bitte die groesse des Spielfeldes waehlen"+"\n");
-                String[][] secondArray = field.getFieldSize();
-                //secondArray = field.getFieldSize();
-                System.out.println("Enter the elements of the array: ");
-                for(int i=0; i<n; i++){
-                    secondArray[i]=choosefieldsize.next();
-                    //error?
-                }
+                //field.getFieldSize();
+
+                // System.out.println("Bitte die groesse des Spielfeldes waehlen"+"\n");
 
 
-                   // secondArray = choosefieldsize.nextInt();
+                //TESTTTTTTTTTTTTTTTTTTTTTTTTTTT!
+
+                // System.out.println("Bitte die groesse des Spielfeldes waehlen"+"\n");
+
+                /*String x = choosefieldsize.next();
+                String y = x;
+                field.setFieldSize(choosefieldsize.next(x));*/
+
+                /*System.out.println(field.getXcord());
+                System.out.println(field.getYcord());
+                System.out.println(field.fieldSize.length);
+                //int x = choosefieldsizex.nextInt();
+                field.setXcord(choosefieldsizex.nextInt()); // setzt Xcords neu!
+
+                //int y = choosefieldsizey.nextInt();
+                field.setYcord(choosefieldsizey.nextInt()); // setzt Ycords neu!
+
+                System.out.println(field.getXcord());
+                System.out.println(field.getYcord());
+                System.out.println(field.fieldSize.length);
+                //field.fieldSize = [Field.getYcord()][Field.getXcord()];
+                */
+
+                Scanner s = new Scanner(System.in);
+                System.out.println("Bitte die groesse des Spielfeldes waehlen");
+
+                fieldsizea = choosefieldsizex.nextInt();
+                fieldsizeb = fieldsizea;
+                System.out.println("____________________");
+                field.fieldSize = new String[fieldsizea][fieldsizeb];
+
+                //field.setFieldSize(new String[fieldsizea][fieldsizeb]);
+                System.out.println(field.fieldSize.length);
+
+                System.out.println("___________");
 
 
-                System.out.println("Spieler Position waehlen fuer die X Position im Grid zwischen 1 und 8.");
+                //field.fieldSize[fieldsizea][fieldsizeb] = choosefieldsizex.next();
+                field.createField();
+
+                /*for(int k=0; k<field.fieldSize.length; k++ ) {
+                    for (int l = 0; l < field.fieldSize.length; l++) {
+                       // field.fieldSize[k][l] = s.next();
+                    }
+                }*/
+
+
+                System.out.println("Spieler Position waehlen fuer die X Position im Grid zwischen 1 und " + (field.fieldSize.length - 1));
                 playerposix = chooseplayerposix.nextInt();
 
-                if (playerposix > 0 && playerposix < 9) {
+                if (playerposix > 0 && playerposix < field.fieldSize.length - 1) {
                     works = true;
                 } else {
                     System.out.println("Zahl ausserhalb des gueltigen bereichs angegeben" + "\n" + "Bitte X Position erneut eingeben.");
                     playerposix = chooseplayerposix.nextInt();
                 }
 
-                System.out.println("Spieler Position waehlen fuer die Y Position im Grid zwischen 1 und 8.");
+                System.out.println("Spieler Position waehlen fuer die Y Position im Grid zwischen 1 und " + (field.fieldSize.length - 1));
                 playerposiy = chooseplayerposiy.nextInt();
 
-                if (playerposiy > 0 && playerposiy < 9) {
+                if (playerposiy > 0 && playerposiy < field.fieldSize.length - 1) {
                     works = true;
                 } else {
                     System.out.println("Zahl ausserhalb des gueltigen bereichs angegeben" + "\n" + "Bitte Y Position erneut eingeben.");
@@ -77,7 +117,6 @@ public class Program {
                         break;
                     } else {
                         System.out.println("Fehler! Falsche eingabe! ");
-                        //playerdirection = chooseplayerdirection.next();
                     }
                 }
 
@@ -86,9 +125,8 @@ public class Program {
                 player.ausgangsposiy(playerposiy);
                 player.setDirection(playerdirection);
 
-
             }
-
+            field.createField();
             field.showField(player.getxPosition(), player.getyPosition(), player.getDirection());
 
             // Ask player for input
@@ -145,6 +183,7 @@ public class Program {
 
             // Player hits Border -> game over! decision between restart and exit
             if (player.hitedges(field.getXcord(), field.getYcord())) {
+            //if (player.hitedges(fieldsizea, fieldsizeb)){
                 p = false;
                 field.showField(player.getxPosition(), player.getyPosition(), player.getDirection());
 
@@ -155,10 +194,7 @@ public class Program {
                     case "y":
                         p = true;
                         System.out.println("Spiel wird neu gestartet!" + "\n");
-
                         works = false;
-                        // player.direction = ">";
-
                         break;
 
                     case "n":

@@ -1,6 +1,6 @@
 public class Player {
-    private int xPosition = 4;
-    private int yPosition = 4;
+    private int xPosition;
+    private int yPosition;
     String direction = ">";
 
     public int getxPosition() {
