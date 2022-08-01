@@ -1,5 +1,6 @@
-public class Field {
 
+
+public class Field {
     // Variables
     static int xcord; //
     static int ycord; //
@@ -24,12 +25,22 @@ public class Field {
         }
     }
 
-    public static void setXcord(int xcord) {
-        Field.xcord = xcord;
+    public int getXcord() {
+        return xcord;
     }
 
-    public static void setYcord(int ycord) {
+    public int getYcord() {
+        return ycord;
+    }
+
+    public int setXcord(int xcord) {
+        Field.xcord = xcord;
+        return xcord;
+    }
+
+    public static int setYcord(int ycord) {
         Field.ycord = ycord;
+        return ycord;
     }
 
     public String[][] getFieldSize() {
@@ -40,13 +51,6 @@ public class Field {
         this.fieldSize = fieldSize;
     }
 
-    public static int getXcord() {
-        return xcord;
-    }
-
-    public static int getYcord() {
-        return ycord;
-    }
 
     // shows field
     public void showField(int playerPosX, int playerPosY, String playerDirection) {

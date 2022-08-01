@@ -91,9 +91,11 @@ public class Player {
         this.yPosition = yPosition;
         this.xPosition = xPosition;
     }
+
     public void ausgangsposix(int xPosition) {
         this.xPosition = xPosition;
     }
+
     public void ausgangsposiy(int yPosition) {
         this.yPosition = yPosition;
     }
